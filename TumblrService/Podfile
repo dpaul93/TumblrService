@@ -7,5 +7,8 @@ target 'TumblrService' do
 
   # Pods for TumblrService
    pod 'Alamofire', '~> 4.7'
+   pod 'SwiftyJSON'
+   pod 'Result'
+   pod 'Kingfisher', '~> 4.0'
 
 end

@@ -10,12 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
+    var router: AppDelegateRouter!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        configureRouter()
+        routeToPosts()
+
         return true
     }
 
@@ -41,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // MARK: - Helpers
+    
+    private func configureRouter() {
+        guard let router = window.map(AppDelegateRouterFactory.default) else {
+            fatalError("Could not instantiate router")
+        }
+        self.router = router
+    }
+    
+    private func routeToPosts() {
+        router.routeToPosts()
+    }
 }
 
